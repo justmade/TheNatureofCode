@@ -4,6 +4,7 @@ package com.code
 	{
 		public function RandomMoving()
 		{
+			Math.random();
 		}
 	}
 }
