@@ -1,12 +1,14 @@
 package
 {
+	import com.code.RandomMoving;
+	
 	import flash.display.Sprite;
 	
 	public class TheNatureofCode extends Sprite
 	{
 		public function TheNatureofCode()
 		{
-			trace()
+			this.addChild(new RandomMoving());
 		}
 	}
 }
