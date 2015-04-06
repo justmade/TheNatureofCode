@@ -1,7 +1,10 @@
 package com.code
 {
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.geom.PerspectiveProjection;
 	import flash.geom.Point;
 
 	/**
@@ -18,6 +21,9 @@ package com.code
 		public function RandomMoving()
 		{
 			addListener();
+	
+//			trace("montecarlo:",montecarlo());
+			bitmapNoise();
 		}
 		
 		
@@ -26,7 +32,7 @@ package com.code
 			
 //			this.graphics.moveTo(0,0);
 //			this.graphics.lineStyle(3);
-			this.addEventListener(Event.ENTER_FRAME, onEnter);
+//			this.addEventListener(Event.ENTER_FRAME, onEnter);
 			
 		}
 		
@@ -64,9 +70,37 @@ package com.code
 			this.graphics.drawCircle(x,180,15);
 			this.graphics.endFill();
 			
+		
+			
+		}
+		
+		private function montecarlo():Number{
+			while(true){
+				var v1:Number = Math.random();
+				
+				var p:Number = v1 ;
+				
+				var v2:Number = Math.random();
+				
+				if(v2 < p){
+					return v1 ;
+				}
+			}
+				return null
+		}
+		
+		private function bitmapNoise():void{
+			var bmd:BitmapData = new BitmapData(100,100,true,0xff223344);
+			var bmp:Bitmap = new Bitmap(bmd);
+			this.addChild(bmp);
+			
+			bmd.noise(Math.random() * 2,0,255);
+			
 		}
 		
 		
 		
 	}
+	
+	
 }
