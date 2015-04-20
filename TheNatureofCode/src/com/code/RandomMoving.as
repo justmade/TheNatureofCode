@@ -4,7 +4,6 @@ package com.code
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.geom.PerspectiveProjection;
 	import flash.geom.Point;
 
 	/**
