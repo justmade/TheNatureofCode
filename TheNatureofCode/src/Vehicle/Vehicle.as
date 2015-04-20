@@ -19,7 +19,10 @@ package Vehicle {
 		public static const WRAP:String="wrap";
 		public static const BOUNCE:String="bounce";
 		
-		public function Vehicle() {
+		private var color:uint;
+		
+		public function Vehicle(color:uint=0x000000) {
+			this.color = color;
 			_position=new Vector2D(0,0) ;
 			_velocity=new Vector2D(0,0) ; 
 			draw();
@@ -28,7 +31,7 @@ package Vehicle {
 		
 		protected function draw():void {
 			graphics.clear();
-			graphics.lineStyle(0);
+			graphics.lineStyle(2,this.color);
 			graphics.moveTo(10,0);
 			graphics.lineTo(-10,5);
 			graphics.lineTo(-10,-5);

@@ -1,4 +1,4 @@
-package {   
+package {
 	import com.math.Vector2D;
 	
 	import flash.display.Sprite;
@@ -6,24 +6,22 @@ package {
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	
-	import Vehicle.Vehicle;
+	import Vehicle.SteeredVehicle;
 	
-	public class VehicleTest extends Sprite {
+	public class SeekTest extends Sprite {
 		
-		private var _vehicle:Vehicle;
+		private var _vehicle:Vehicle.SteeredVehicle;
 		
-		public function VehicleTest() {
+		public function SeekTest() {
 			stage.align=StageAlign.TOP_LEFT;
 			stage.scaleMode=StageScaleMode.NO_SCALE;
-			_vehicle=new Vehicle();  ;
+			_vehicle = new SteeredVehicle();
 			addChild(_vehicle);
-			_vehicle.position=new Vector2D(100,100);
-			_vehicle.velocity.length=5;
-			_vehicle.velocity.angle=Math.PI/4;//45度
-			addEventListener(Event.ENTER_FRAME,onEnterFrame);
+			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
 		
 		private function onEnterFrame(event:Event):void {
+			_vehicle.arrive(new Vector2D(mouseX, mouseY));//以当前鼠标位置为目标点
 			_vehicle.update();
 		}
 	}
