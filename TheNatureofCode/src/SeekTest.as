@@ -6,11 +6,11 @@ package {
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	
-	import Vehicle.SteeredVehicle;
+	import com.Vehicle.SteeredVehicle;
 	
 	public class SeekTest extends Sprite {
 		
-		private var _vehicle:Vehicle.SteeredVehicle;
+		private var _vehicle:com.Vehicle.SteeredVehicle;
 		
 		public function SeekTest() {
 			stage.align=StageAlign.TOP_LEFT;

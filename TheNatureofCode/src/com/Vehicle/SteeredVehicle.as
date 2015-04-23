@@ -1,4 +1,4 @@
-package  Vehicle{
+package  com.Vehicle{
 	import com.math.Vector2D;
 	
 	//(具有)转向(行为的)机车
@@ -72,6 +72,53 @@ package  Vehicle{
 			var lookAheadTime:Number=position.dist(target.position)/_maxSpeed;//假如目标不动，追捕者开足马力赶过去的话，计算需要多少时间
 			var predictedTarget:Vector2D=target.position.add(target.velocity.multiply(lookAheadTime));
 			seek(predictedTarget);
+		}
+		
+		//躲避(evade)行为
+		public function evade(target: Vehicle):void {
+			var lookAheadTime:Number=position.dist(target.position)/_maxSpeed;
+			var predictedTarget:Vector2D=target.position.add(target.velocity.multiply(lookAheadTime));
+			flee(predictedTarget);//仅仅只是这里改变了而已
+		}
+		
+		private var _wanderAngle:Number=0;
+		private var _wanderDistance:Number=10;
+		private var _wanderRadius:Number=5;
+		private var _wanderRange:Number=1;
+		
+		//漫游
+		public function wander():void {
+			var center:Vector2D=velocity.clone().normalize().multiply(_wanderDistance);
+			var offset:Vector2D=new Vector2D(0);
+			offset.length=_wanderRadius;
+			offset.angle=_wanderAngle;
+			_wanderAngle+=(Math.random()-0.5)*_wanderRange;
+			var force:Vector2D=center.add(offset);
+			_steeringForce=_steeringForce.add(force);
+		}
+		
+		public function set wanderDistance(value:Number):void {
+			_wanderDistance=value;
+		}
+		
+		public function get wanderDistance():Number {
+			return _wanderDistance;
+		}
+		
+		public function set wanderRadius(value:Number):void {
+			_wanderRadius=value;
+		}
+		
+		public function get wanderRadius():Number {
+			return _wanderRadius;
+		}
+		
+		public function set wanderRange(value:Number):void {
+			_wanderRange=value;
+		}
+		
+		public function get wanderRange():Number {
+			return _wanderRange;
 		}
 	}
 }

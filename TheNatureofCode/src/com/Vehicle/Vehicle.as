@@ -1,4 +1,4 @@
-package Vehicle {
+package com.Vehicle {
 	import com.math.Vector2D;
 	
 	import flash.display.Sprite;

@@ -6,7 +6,7 @@ package {
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	
-	import Vehicle.Vehicle;
+	import com.Vehicle.Vehicle;
 	
 	public class VehicleTest extends Sprite {
 		
